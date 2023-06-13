@@ -13,7 +13,7 @@ import (
 )
 
 var (
-	DEBUG  = false
+	DEBUG  = true
 	tweets Tweets
 )
 
