@@ -33,6 +33,10 @@ type Tweets struct {
 func initTweets() error {
 	file, err := os.Open("tweets.json")
 	if err != nil {
+		if os.IsNotExist(err) {
+			log.Println("tweets.json file does not exist. Creating a new file.")
+			return nil
+		}
 		return err
 	}
 	defer file.Close()
@@ -40,6 +44,11 @@ func initTweets() error {
 	data, err := ioutil.ReadAll(file)
 	if err != nil {
 		return err
+	}
+
+	if len(data) == 0 {
+		log.Println("tweets.json file is empty. Initializing with an empty list of tweets.")
+		return nil
 	}
 
 	err = json.Unmarshal(data, &tweets)
