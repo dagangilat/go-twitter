@@ -44,7 +44,7 @@ To install and run the application, follow these steps:
 
 To deploy and run the application, follow these steps:
 
-1. Start the backend server:
+Start the backend server:
 
    ```bash
    cd backend
@@ -53,16 +53,6 @@ To deploy and run the application, follow these steps:
 
    The backend server will start running on `http://localhost:8000`.
 
-2. Start the frontend development server:
-
-   ```bash
-   cd frontend
-   npm start
-   ```
-
-   The frontend development server will start running on `http://localhost:3000`.
-
-3. Open your web browser and access `http://localhost:3000` to see the Twitter-like app in action.
 
 ## API Endpoint Examples
 
