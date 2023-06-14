@@ -1,8 +1,9 @@
 {
   "info": {
-    "_postman_id": "YOUR_POSTMAN_COLLECTION_ID",
+    "_postman_id": "go-twitter",
     "name": "Twitter-like App",
-    "description": "API calls for the Twitter-like App"
+    "description": "API calls for the Twitter-like App",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
     {
@@ -12,8 +13,9 @@
         "header": [],
         "url": {
           "raw": "http://localhost:8000/tweets",
+          "protocol": "http",
           "host": [
-            "http://localhost"
+            "localhost"
           ],
           "port": "8000",
           "path": [
@@ -30,8 +32,9 @@
         "header": [],
         "url": {
           "raw": "http://localhost:8000/tweets/{id}",
+          "protocol": "http",
           "host": [
-            "http://localhost"
+            "localhost"
           ],
           "port": "8000",
           "path": [
@@ -55,12 +58,13 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\"user\": \"user1\", \"text\": \"This is a new tweet\"}"
+          "raw": "{\n\t\"user\": \"user1\",\n\t\"text\": \"This is a new tweet\"\n}"
         },
         "url": {
           "raw": "http://localhost:8000/tweets",
+          "protocol": "http",
           "host": [
-            "http://localhost"
+            "localhost"
           ],
           "port": "8000",
           "path": [
@@ -83,12 +87,13 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\"user\": \"user1\", \"text\": \"Updated tweet\"}"
+          "raw": "{\n\t\"user\": \"user1\",\n\t\"text\": \"Updated tweet\"\n}"
         },
         "url": {
           "raw": "http://localhost:8000/tweets/{id}",
+          "protocol": "http",
           "host": [
-            "http://localhost"
+            "localhost"
           ],
           "port": "8000",
           "path": [
@@ -106,8 +111,9 @@
         "header": [],
         "url": {
           "raw": "http://localhost:8000/tweets/{id}",
+          "protocol": "http",
           "host": [
-            "http://localhost"
+            "localhost"
           ],
           "port": "8000",
           "path": [
@@ -118,7 +124,8 @@
       },
       "response": []
     }
-  ]
+  ],
+  "protocolProfileBehavior": {
+    "disableBodyPruning": true
+  }
 }
-
-
