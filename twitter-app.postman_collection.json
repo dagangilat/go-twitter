@@ -1,0 +1,124 @@
+{
+  "info": {
+    "_postman_id": "YOUR_POSTMAN_COLLECTION_ID",
+    "name": "Twitter-like App",
+    "description": "API calls for the Twitter-like App"
+  },
+  "item": [
+    {
+      "name": "Get All Tweets",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/tweets",
+          "host": [
+            "http://localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "tweets"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Single Tweet",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/tweets/{id}",
+          "host": [
+            "http://localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "tweets",
+            "{id}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create New Tweet",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"user\": \"user1\", \"text\": \"This is a new tweet\"}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/tweets",
+          "host": [
+            "http://localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "tweets"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Tweet",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"user\": \"user1\", \"text\": \"Updated tweet\"}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/tweets/{id}",
+          "host": [
+            "http://localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "tweets",
+            "{id}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Tweet",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/tweets/{id}",
+          "host": [
+            "http://localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "tweets",
+            "{id}"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
+
+
