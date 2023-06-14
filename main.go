@@ -9,12 +9,8 @@ import (
 	"os"
 	"sync"
 
+	"github.com/google/uuid"
 	"github.com/gorilla/mux"
-)
-
-var (
-	DEBUG  = true
-	tweets Tweets
 )
 
 // Tweet represents a tweet
@@ -29,6 +25,11 @@ type Tweets struct {
 	sync.Mutex
 	Tweets []Tweet `json:"tweets"`
 }
+
+var (
+	DEBUG  = true
+	tweets Tweets
+)
 
 func initTweets() error {
 	file, err := os.Open("tweets.json")
@@ -79,6 +80,7 @@ func logMessage(message string) {
 	}
 }
 
+// GetTweets returns all tweets
 func GetTweets(w http.ResponseWriter, r *http.Request) {
 	tweets.Lock()
 	defer tweets.Unlock()
@@ -87,6 +89,7 @@ func GetTweets(w http.ResponseWriter, r *http.Request) {
 	logMessage("Listed all tweets")
 }
 
+// GetTweet returns a specific tweet by ID
 func GetTweet(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	tweetID := params["id"]
@@ -106,9 +109,12 @@ func GetTweet(w http.ResponseWriter, r *http.Request) {
 	logMessage(fmt.Sprintf("Tweet with ID: %s not found", tweetID))
 }
 
+// CreateTweet creates a new tweet
 func CreateTweet(w http.ResponseWriter, r *http.Request) {
 	var tweet Tweet
 	_ = json.NewDecoder(r.Body).Decode(&tweet)
+
+	tweet.ID = uuid.New().String() // Generate a unique ID for the tweet
 
 	tweets.Lock()
 	defer tweets.Unlock()
@@ -125,10 +131,10 @@ func CreateTweet(w http.ResponseWriter, r *http.Request) {
 	logMessage("Created a new tweet")
 }
 
+// UpdateTweet updates an existing tweet by ID
 func UpdateTweet(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	tweetID := params["id"]
-
 	tweets.Lock()
 	defer tweets.Unlock()
 
@@ -156,6 +162,7 @@ func UpdateTweet(w http.ResponseWriter, r *http.Request) {
 	logMessage(fmt.Sprintf("Tweet with ID: %s not found", tweetID))
 }
 
+// DeleteTweet deletes a tweet by ID
 func DeleteTweet(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	tweetID := params["id"]
