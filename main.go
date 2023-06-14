@@ -119,6 +119,8 @@ func CreateTweet(w http.ResponseWriter, r *http.Request) {
 	tweets.Lock()
 	defer tweets.Unlock()
 
+	tweet.Text = tweet.Text // Assign the text field from the request body
+
 	tweets.Tweets = append(tweets.Tweets, tweet)
 
 	err := saveTweets()
@@ -128,7 +130,7 @@ func CreateTweet(w http.ResponseWriter, r *http.Request) {
 	}
 
 	json.NewEncoder(w).Encode(tweet)
-	logMessage("Created a new tweet")
+	logMessage(fmt.Sprintf("Created a new tweet, ID: %s", tweet.ID))
 }
 
 // UpdateTweet updates an existing tweet by ID
